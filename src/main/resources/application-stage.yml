@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://proxy-iandna-master.proxy-cumctwbiixcv.ap-northeast-2.rds.amazonaws.com:3306/ivory_db_dev_211221?autoReconnect=true&useUnicode=true&--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      username: ENC(d/XgoKGhMUNU6+DhtknO18B/HA5eSzZulm50Xhpqlh4=)
+      password: ENC(mrPHGil/JMmiKWLACbWCrmgmRXIx/XSE5OPc9g9jdHY=)
+      auto-commit: true
+      
+server:
+  port: 5000
+  servlet:
+    context-path: /project
+    jsp:
+      init-parameters:
+        development: true
+  error:
+    whitelabel:
+      enabled: false
+  file:
+    url: https://s3.ap-northeast-2.amazonaws.com/iandna-contents/ivory/
+    path: /home/ec2-user/ivory_file/
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 300
+
+s3:
+  domainName: https://iandna-imgsvr-family.com
+  bucketName: iandna-contents
+  folderName: family_stage
+  #stage -> https://iandna-imgsvr.com/family/stage/      iandna-contents/family/stage
+
+dynamic:
+  s3-bucket: /dev_stage

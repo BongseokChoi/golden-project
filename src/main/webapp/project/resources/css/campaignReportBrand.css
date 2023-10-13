@@ -1,0 +1,67 @@
+html, .ivory{
+    font-size: 14px;
+}
+h1{
+    margin-bottom: 0;
+}
+p{
+    margin-bottom: .5rem;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.ivory .btn.btn-ivory{
+    background-color: #68C0B5;
+    color: #fff;
+}
+.flex-box{
+    display: flex;
+}
+.animation-delay-2{animation-delay: .2s;}
+.animation-delay-4{animation-delay: .4s;}
+.animation-delay-6{animation-delay: .6s;}
+.animation-delay-8{animation-delay: .8s;}
+.animation-delay-10{animation-delay: 1s;}
+.animation-delay-12{animation-delay: 1.2s;}
+.animation-delay-14{animation-delay: 1.4s;}
+.animation-delay-16{animation-delay: 1.6s;}
+.animation-delay-18{animation-delay: 1.8s;}
+.animation-delay-20{animation-delay: 2s;}
+
+/* table */
+.table th{
+    white-space: nowrap;
+}
+
+/* wrapper */
+.ivory .wrapper{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* title box */
+.ivory .title-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px 0px;
+}
+
+/* brand list */
+.brand-list{
+    justify-content: space-evenly;
+}
+.brand-list li{
+    cursor: pointer;
+}
+@media(max-width: 767px){
+    .brand-list{
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .brand-list li{
+        margin-right: 20px;
+    }
+}

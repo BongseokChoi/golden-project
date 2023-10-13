@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.iandna.project.logic.main.MainMapper">
+    <select id="selectFrcsCustNoByShopId" parameterType="string" resultType="string">
+        SELECT	FRCS_CUST_NO	AS frcsCustNo
+        FROM	SNB_CUST_INFO
+        WHERE	CUST_SHOP_ID = #{frcsCustNo}
+        LIMIT	1
+    </select>
+
+    <select id="selectCustTokenInfo" parameterType="MapData" resultType="MapData">
+       	SELECT
+       				SEQ_NO		AS	seq_no
+       				,CUST_NO	AS	cust_no
+       				,TOKEN		AS	login_token
+       				,SEC_KEY	AS	secret_key
+       				,OS			AS	os
+       				,REG_DT		AS	reg_dt
+       				,REG_TM		AS	reg_tm
+       	FROM		SNB_CUST_TOKEN_INFO
+       	WHERE		TOKEN = REPLACE(#{login_token}, ' ', '+')
+       	AND			TOKEN != ''
+    </select>
+</mapper>

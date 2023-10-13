@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 쿼리 부분 로그 출력 -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- properties -->
+    <property name="LOG_PATH" value="/data/log"/>
+    <property name="LOG_SAVE_PATH_DEBUG" value="/data/log/debug.d"/>
+    <property name="LOG_SAVE_PATH_ERROR" value="/data/log/error.d"/>
+    <property name="LOG_SAVE_PATH_HTTP" value="/data/log/http.d"/>
+    <property name="LOG_PATTERN" value="%d{HH:mm:ss:SSS}\t%thread\t%-5level\t%msg%n"/>
+
+    <!-- Appenders -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!--
+        <appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{HH:mm:ss:SSS}\t%thread\t%-5level\t%msg%n</pattern>
+            </encoder>
+        </appender>
+     -->
+
+    <!-- Debug File -->
+    <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_SAVE_PATH_DEBUG}/debug.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <!-- Debug File -->
+    <appender name="LOG_ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>${LOG_PATH}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_SAVE_PATH_ERROR}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger -->
+    <logger name="com.iandna" level="DEBUG" />
+    <logger name="jdbc.sqlonly" level="INFO"/>
+    <logger name="jdbc.resultsettable" level="INFO"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="jdbc.resultset" level="ERROR"/>
+    <logger name="jdbc.resultsettable" level="OFF"/>
+    <logger name="jdbc.audit" level="ERROR"/>
+    <logger name="jdbc.sqltiming" level="ERROR"/>
+    <!-- Root Logger -->
+    <root level="debug">
+        <appender-ref ref="console" />
+    </root>
+    <root level="info">
+        <appender-ref ref="LOG_FILE" />
+    </root>
+    <!--
+    <if condition='property("LOG_MODE").equals("D")'>
+        <then>
+            <root level="debug">
+                <appender-ref ref="console" />
+            </root>
+        </then>
+        <else>
+            <root level="info">
+                <appender-ref ref="LOG_FILE" />
+            </root>
+        </else>
+    </if>
+     -->
+</configuration>

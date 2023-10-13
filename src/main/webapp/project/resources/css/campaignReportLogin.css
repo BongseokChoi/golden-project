@@ -1,0 +1,103 @@
+/* common */
+/* placeholder 스타일 지정 */
+input::placeholder {
+color: #ddd !important;
+opacity: 1 !important;
+}
+input::-webkit-input-placeholder {
+color: #ddd;
+}
+/* IE */
+input:-ms-input-placeholder {
+color: #ddd;
+}
+/* Firefox */
+input:-mos-input-placeholder {
+color: #ddd;
+}
+
+.form-group.custom{
+    position: relative;
+}
+.form-group.custom .form-control{
+    border-radius: .5rem;
+    border-style: solid;
+    padding: 12px 18px;
+}
+.form-group.custom.error .form-control{
+    border-color: #ed5565;
+}
+.form-group.custom .helper-text{
+    display: flex;
+    align-items: center;
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 7px;
+    margin: 7px;
+    font-size: .7rem;
+    padding: 0 10px;
+    background-color: #fff;
+    color: #ed5565;
+    transform-origin: left center;
+    opacity: 0;
+    transform: translateX(-25%);
+}
+.form-group.custom.error .helper-text{
+    animation: formError .3s forwards;
+}
+@keyframes formError{
+    0%{
+        opacity: 0;
+        transform: translateX(-25%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+/* login */
+.login-wrap{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    width: 100% !important;
+    max-width: 400px;
+}
+.login-box{
+    width: 100%;
+    padding: 15px;
+}
+.login-box h1{
+    width: 200px;
+    font-size: inherit;
+    margin: 0 auto;
+    padding: 0;
+}
+.login-box h1 img{
+    display: block;
+    width: 100%;
+}
+.login-box h3{
+    margin-top: 20px;
+}
+.login-form{
+    margin-top: 20px;
+    max-width: 600px;
+    width: 100%;
+    padding: 15px;
+    /* border: 1px solid rgba(0,0,0,0.1); */
+    background-color: #fff;
+    border-radius: .5rem;
+}
+.login-form h4{
+    margin-bottom: 25px;
+}
+.login-form .btn{
+    background-color: #68C0B5;
+    color: #fff;
+    border-radius: 50px;
+}

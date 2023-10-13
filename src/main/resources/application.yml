@@ -1,0 +1,88 @@
+spring:
+  profiles:
+    active: local
+  mvc:
+    converters:
+      preferred-json-mapper: gson
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    pathmatch:
+      matching-strategy: ant_path_matcher
+---
+spring:
+  profiles:
+    active: prod
+  mvc:
+    converters:
+      preferred-json-mapper: gson
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    pathmatch:
+      matching-strategy: ant_path_matcher
+---
+spring:
+  profiles:
+    active: local
+  mvc:
+    converters:
+      preferred-json-mapper: gson
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    pathmatch:
+      matching-strategy: ant_path_matcher
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: TRACE
+#    root: DEBUG
+security:
+  oauth2:
+    jwt:
+      signkey: ENC(2IpVP5zf6hoDw/tpDIKTiQ==)
+      header: Authorization
+      
+auth.cookie.hmac-key: ENC(IFrvXG2xuxEw/z/NCWHHUlhbCmV7e+iQiTJlSP7+vLE/gj3Z+/gxSMmjJvSJCt45XneJZgtUls51nK0VxQqsqS73DXJ2ipwi9qVjpGLkUEE=)
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+kcp:
+  gwurl: https://cert.kcp.co.kr/kcp_cert/cert_view.jsp
+  sitecd: AGOE4
+  enckey: ENC(tNyXFuFqTHrE2GuU1w1xk6pf6Fd2DmlZMzMtJJwZ80mKlLzOe19GhnWugw4VjPThcsUpD9UPUt7aQNijszJhfYYY+MukVK+xf0VC7ANMDQs=)
+  websiteid: ''
+  returl: https://iandna.biz:44100/share/kcpcert/procReq.do
+auth:
+  cookie:
+    hmac-key: ENC(IFrvXG2xuxEw/z/NCWHHUlhbCmV7e+iQiTJlSP7+vLE/gj3Z+/gxSMmjJvSJCt45XneJZgtUls51nK0VxQqsqS73DXJ2ipwi9qVjpGLkUEE=)
+s3:
+  upload:
+    bucket: iandna-contents/ivory
+    path: common/
+    nodeValue: 'true'
+  secret:
+    key: ENC(UQJFgaF9K4qApLMQeH9TmzrubbgZOLKcC0qu94BaMt2O+OjIOKQ/VDofB4ej/eNmueZraUdwNYc=)
+  access:
+    key: ENC(aVLPHL7sIqYu/Jrpjzr5HfP/dFgoJ535yo1hguo3qg8=)
+  domainName: https://iandna-imgsvr-family.com
+  bucketName: iandna-contents
+  folderName: family_stage
+  server:
+    file:
+      url: https://s3.ap-northeast-2.amazonaws.com/iandna-contents/ivory/
+      path: /home/ec2-user/was_server/file/
+    
+
+#############
+#  custom   #
+#############
+svr:
+  passkey: ENC(Gu0WiFomn3+JbMNzRRRm5uCWSNduyzqpH9uK/VtYWdo=)

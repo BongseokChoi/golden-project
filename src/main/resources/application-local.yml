@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    hikari:
+      # dev-db
+      jdbc-url: jdbc:mysql://3.36.122.80:43340/ivory_db_dev_211221?autoReconnect=true&useUnicode=true&--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+#       real-db
+#      jdbc-url: jdbc:mysql://3.36.122.80:43340/ivory_db?autoReconnect=true&useUnicode=true&--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      username: ENC(yMi1fuHIVtIbzfcT9SHqqzoQh1U0txFDy89TCyB9GVA=)
+      password: ENC(TLluRhe6Dq+9vwNg7uL88m8gclrNzCR9TEqUdCs9SlnFAsAk8gj4RvpbYzrPJvJJ)
+      auto-commit: true
+
+server:
+  port: 10020
+  servlet:
+    context-path: /project
+    jsp:
+      init-parameters:
+        development: true
+  error:
+    whitelabel:
+      enabled: false
+  file:
+    url: https://s3.ap-northeast-2.amazonaws.com/iandna-contents/ivory/
+    path: /home/ec2-user/ivory_file/
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 300
+
+dynamic:
+  s3-bucket: /dev_stage

@@ -1,0 +1,123 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'java'
+	id 'war'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.ivory'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+	mavenCentral()
+    google()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation 'org.springframework.session:spring-session-core:2.7.0'
+	implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
+	implementation 'org.apache.httpcomponents:httpclient'
+	implementation 'org.apache.httpcomponents:httpcore'
+	implementation 'mysql:mysql-connector-java'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+	implementation 'org.springframework.cloud:spring-cloud-context:3.0.3'
+	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.2.5.RELEASE'
+	implementation 'io.micrometer:micrometer-core'
+	implementation 'org.springframework.security:spring-security-jwt:1.1.1.RELEASE'
+	implementation 'com.auth0:java-jwt:3.18.2'
+	implementation 'com.googlecode.json-simple:json-simple:1.1'
+	implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+//	implementation 'org.codehaus.janino:janino:3.1.6'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+
+	implementation 'io.github.rburgst:okhttp-digest:2.6'
+	implementation 'org.aspectj:aspectjrt:1.6.10'
+	implementation 'org.aspectj:aspectjweaver:1.6.10'
+	implementation 'org.aspectj:aspectjtools:1.6.10'
+	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.2.Final'
+
+	compileOnly 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.6.RELEASE'
+	testCompileOnly	'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor	'org.projectlombok:lombok'
+	annotationProcessor	'org.projectlombok:lombok'
+
+	//aws
+//	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.393'
+	implementation 'com.amazonaws:aws-java-sdk-bundle:1.11.966'
+
+	// https://mvnrepository.com/artifact/net.sf.json-lib/json-lib
+	implementation 'net.sf.json-lib:json-lib:2.4:jdk15'
+
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	implementation 'commons-io:commons-io:2.4'
+
+	implementation 'commons-fileupload:commons-fileupload:1.4'
+
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-bundle
+	implementation 'com.amazonaws:aws-java-sdk-bundle:1.11.966'
+
+	// https://mvnrepository.com/artifact/org.springframework/spring-mock
+	implementation group: 'org.springframework', name: 'spring-mock', version: '2.0.8'
+
+	// https://mvnrepository.com/artifact/com.drewnoakes/metadata-extractor
+	implementation 'com.drewnoakes:metadata-extractor:2.9.1'
+
+	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.4'
+
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+
+	// https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib
+	implementation 'org.imgscalr:imgscalr-lib:4.2'
+
+	// https://mvnrepository.com/artifact/net.sf.barcode4j/barcode4j
+	implementation 'net.sf.barcode4j:barcode4j:2.1'
+
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation 'org.json:json:20160810'
+
+	// jsp
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'javax.servlet:jstl'
+
+	// poi
+	// https://mvnrepository.com/artifact/org.apache.poi/poi
+	implementation 'org.apache.poi:poi:3.10-FINAL'
+	// https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+	implementation 'org.apache.poi:poi-ooxml:3.10-FINAL'
+
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+	implementation 'org.springframework.security:spring-security-taglibs:4.0.4.RELEASE'
+
+	implementation 'org.slf4j:jcl-over-slf4j'
+	implementation 'ch.qos.logback:logback-classic'
+}
+
+// encoding setting
+compileJava.options.encoding = 'UTF-8'
+//complieTestJava.options.encoding = 'UTF-8'
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
